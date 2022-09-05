@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:C:\Users\user\Desktop\LMR _ Intern\TheChallenge-JS\css\main.scss">
+    <title>Stop Watch</title>
+    <style>
+    body{background: orange;
+        margin: 0; 
+        height: 100%;
+        text-align: center;
+    }
+   
+    .countainer{ 
+        width: 800;
+        margin: 30px auto;
+        color: white;
+        text-align: center;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size: large;
+        
+    }
+
+    p{
+        color: white;
+        text-align: center;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size: large;
+    }
+
+    button{
+        cursor: pointer;
+        width: 150px;
+        height: 50px;
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+        border-radius: 5px;
+        margin-right: 10px;
+        outline: none;
+    }
+        </style>
+</head>
+
+<body>
+        <div class="countainer">
+            <img src="C:\Users\user\Desktop\LMR _ Intern\TheChallenge-JS\yellowtimer.png" alt="Timer" width="200px">
+            <p>STOPWATCH </p>
+            <p>VANILLA JAVASCRIPT STOPWATCH</p>  
+        </div>
+
+        <p><span id="second">00</span>:<span id="tens">00</span></p>   
+        <button id="button-start">Start</button> 
+        <button id="button-stop">Stop</button> 
+        <button id="button-reset">Reset</button> 
+   
+
+    <script>
+var second = 00;
+var tens = 0;
+ var appendTens = document.getElementById("tens");
+ var appendSecond = document.getElementById("second");
+ var buttonStart = document.getElementById("button-start");
+ var buttonStop = document.getElementById("button-stop");
+ var buttonReset = document.getElementById("button-reset");
+ var interval; // to store timer values
+
+function startTimer(){
+    tens++;
+
+    if(tens < 9){
+        appendTens.innerHTML="0" + tens;
+    }
+    if(tens > 9){
+        appendTens.innerHTML= tens;
+    }
+    if(tens > 99){
+        second++;
+        appendSecond.innerHTML="0" + second;
+        tens=0;
+        appendTens.innerHTML="0" + 0;
+    }
+    if(second > 9){
+        appendSecond.innerHTML= second;
+    }
+}
+buttonStart.onclick=function() {
+    interval= setInterval(startTimer);
+};
+buttonStop.onclick=function() {
+    clearInterval(interval);
+};
+buttonReset.onclick=function() {
+    clearInterval(interval);
+tens= "00";
+second="00";
+appendSecond.innerHTML= second;
+appendTens.innerHTML= tens;
+};
+    </script>
+</body>
+</html>
